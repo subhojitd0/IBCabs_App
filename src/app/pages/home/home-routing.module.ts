@@ -19,6 +19,12 @@ const routes: Routes = [
     
   },
   {
+    path: 'oldDuty',
+    loadChildren: () => import('../old-duty/old-duty.module').then( m => m.OldDutyPageModule)
+    
+    
+  },
+  {
     path: 'dutyDetails',
     component: DutyDetailsPage,
     
