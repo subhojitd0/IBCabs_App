@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.page.html',
+  styleUrls: ['./sidenav.page.scss'],
 })
-export class HomePage implements OnInit {
+export class SideNavPage implements OnInit {
 
   pages=[
     {
@@ -24,7 +24,8 @@ export class HomePage implements OnInit {
   ];
 
   selectedPath='';
-  pagerefrsh: string;
+  loggedin: any;
+  pagerefresh: any;
 
   constructor(private router:Router) {
     this.router.events.subscribe((event:RouterEvent)=>{
@@ -33,11 +34,9 @@ export class HomePage implements OnInit {
    }
 
   ngOnInit() {
-    this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
-    if(this.pagerefrsh == "0"){
-      localStorage.setItem('pagerefresh', "1");
-      location.reload();
-    }
+    debugger;
+    this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
+    this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
   }
 
 }
