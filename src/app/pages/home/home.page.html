@@ -32,7 +32,8 @@
       <div *ngFor="let option of rentalDetail"> 
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>{{option.party}}</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="option.dutytype === '1'">Walk-in Duty</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="option.dutytype === '0'">Office Duty</ion-card-subtitle>
           <ion-card-title>Date : {{option.dutydate}} | 4:00 PM </ion-card-title>
         </ion-card-header>
       
@@ -43,7 +44,7 @@
 
         <ion-item>
           <ion-icon name="pin" slot="start"></ion-icon>
-          <ion-label>Soma Dey</ion-label>
+          <ion-label>{{option.party}}</ion-label>
           <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
         </ion-item>
       </ion-card>
