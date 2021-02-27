@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IB-Partner</string>
+    <string name="title_activity_main">IB-Partner</string>
+    <string name="package_name">ib.app.test</string>
+    <string name="custom_url_scheme">ib.app.test</string>
+</resources>
