@@ -1,8 +1,17 @@
 
-    <ion-content style="top: 50px !important;">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Upcoming Duty</ion-title>
+  </ion-toolbar>
+</ion-header>    
+    
+    <ion-content >
 
 
-      <ion-card>
+      <ion-card class="active-duty">
         <ion-card-header>
           <ion-card-subtitle>Tollygunge - Howrah</ion-card-subtitle>
           <ion-card-title>Date : 23rd Oct 2020 | 12:00 PM </ion-card-title>
@@ -20,14 +29,15 @@
         </ion-item>
       </ion-card>
 
+      <div *ngFor="let option of rentalDetail"> 
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>Baghajatin - Rajarhat</ion-card-subtitle>
-          <ion-card-title>Date : 23rd Oct 2020 | 4:00 PM </ion-card-title>
+          <ion-card-subtitle>{{option.party}}</ion-card-subtitle>
+          <ion-card-title>Date : {{option.dutydate}} | 4:00 PM </ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          Cab Number : WB-04C-7541<br>
+          Cab Number : {{option.carnumber}}<br>
           Address : 1/7A New Stand Apartment Baghajatin, Kolkata 700033
         </ion-card-content>
 
@@ -37,44 +47,7 @@
           <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
         </ion-item>
       </ion-card>
-      
-      
-      
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Garia - Naihati</ion-card-subtitle>
-          <ion-card-title>Date : 24rd Oct 2020 | 9:00 AM </ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Cab Number : WB-04C-7541<br>
-          Address : 12 Avon Street Garia, Kolkata 700021
-        </ion-card-content>
-
-        <ion-item>
-          <ion-icon name="pin" slot="start"></ion-icon>
-          <ion-label>Anvesh Tripathy</ion-label>
-          <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
-        </ion-item>
-      </ion-card>
-      
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Baghajatin - Rajarhat</ion-card-subtitle>
-          <ion-card-title>Date : 25rd Oct 2020 | 4:00 PM </ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Cab Number : WB-04C-7541<br>
-          Address : 1/7A New Stand Apartment Baghajatin, Kolkata 700033
-        </ion-card-content>
-
-        <ion-item>
-          <ion-icon name="pin" slot="start"></ion-icon>
-          <ion-label>Soma Dey</ion-label>
-          <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
-        </ion-item>
-      </ion-card>
+    </div>
 
 <br><br><br><br><br><br>  
 

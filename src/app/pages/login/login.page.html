@@ -16,15 +16,15 @@
     <form class="ion-padding">
 
       <div class="wrap-input">
-        <input class="input" type="text" name="user-name" placeholder="User Name">
+        <input class="input" type="text" name="user-name" placeholder="User Name" [(ngModel)]="username">
       </div>
 
       <div class="wrap-input">
-        <input class="input" type="password" name="user-pass" placeholder="Password">
+        <input class="input" type="password" name="user-pass" placeholder="Password" [(ngModel)]="password">
       </div>
 
-      <div class="container-form-btn">
-        <button class="form-btn custom-font" (click)="redirectToHome()">
+      <div class="container-form-btn" (click)="redirectToHome()">
+        <button class="form-btn custom-font">
           Submit
         </button>
       </div>

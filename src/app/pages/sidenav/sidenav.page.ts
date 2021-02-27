@@ -11,7 +11,7 @@ export class SideNavPage implements OnInit {
   pages=[
     {
       title:'Upcoming Duty',
-      url:'/home/upcomingDuty'
+      url:'/home'
     },
     {
       title:'Old Duty',

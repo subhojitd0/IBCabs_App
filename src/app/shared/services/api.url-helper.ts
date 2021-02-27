@@ -1,0 +1,15 @@
+export const LOGIN_API = "loginCheck.php";
+export const PARTY_HEAD_API = "partyhead.php";
+export const RATE_SLAB_API = "rateslab.php";
+export const OWNER_API = "owner.php";
+export const CAR_API = "car.php";
+export const DRIVER_API = "driver.php";
+export const RENTAL_DETAIL_API_OFFICE = "ddroffice.php";
+export const RENTAL_DETAIL_API_OFFICE_BULKEDIT = "ddrofficerowedit.php";
+export const EXTRA_API = "extra.php";
+export const BILL_API = "billregister.php";
+export const BILL_CNN_API = "partybilla.php";
+export const BILL_ONCALL_EXTRA_API = "partybillb.php";
+export const REPORT_TO_API = "report.php";
+export const BILL_ONCALL_COAL_INDIA_API = "partybillc.php";
+export const BILL_RELIANCE_API = "partybilld.php";
