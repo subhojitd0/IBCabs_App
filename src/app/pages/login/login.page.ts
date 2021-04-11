@@ -35,8 +35,8 @@ export class LoginPage implements OnInit {
       if(!val.status)
       {
         this.driverDetails=val;
-        //localStorage.setItem('loggedin', "1");
-       // localStorage.setItem('driverDetails',JSON.stringify(this.driverDetails));
+        localStorage.setItem('loggedin', "1");
+        localStorage.setItem('driverDetails',JSON.stringify(this.driverDetails));
         this.router.navigateByUrl('/home');
       }
       else{

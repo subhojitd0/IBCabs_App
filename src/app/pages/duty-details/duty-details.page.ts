@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-duty-details',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DutyDetailsPage implements OnInit {
 
-  constructor() { }
+
+  constructor(public router:Router) { 
+
+    
+  }
 
   ngOnInit() {
   }
+
+  backhome(){
+    this.router.navigateByUrl('/home');
+  }
+ 
 
 }

@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { Routes,RouterModule } from '@angular/router';
+import { StartDutyComponent } from './duty-start/duty-start.component';
 
 
 const routes:Routes=[
@@ -39,8 +40,9 @@ const routes:Routes=[
     FormsModule,
     IonicModule,
     HomePageRoutingModule
+    
   ],
  
-  declarations: [HomePage]
+  declarations: [HomePage,StartDutyComponent]
 })
 export class HomePageModule {}

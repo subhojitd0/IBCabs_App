@@ -10,11 +10,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SideNavPage } from './pages/sidenav/sidenav.page';
 import {ToastrModule} from 'ngx-toastr';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { StartDutyComponent } from './pages/home/duty-start/duty-start.component';
+
 
 @NgModule({
   declarations: [AppComponent, SideNavPage],
   entryComponents: [],
-  imports: [BrowserModule,BrowserAnimationsModule, IonicModule.forRoot(), AppRoutingModule, ToastrModule.forRoot()],
+  imports: [BrowserModule,BrowserAnimationsModule, IonicModule.forRoot(), 
+            AppRoutingModule, 
+            ToastrModule.forRoot(),
+            MatDialogModule
+          ],
   providers: [
     StatusBar,
     SplashScreen,

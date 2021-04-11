@@ -11,7 +11,8 @@
     <ion-content >
 
 
-      <ion-card class="active-duty">
+      <!-- 
+        <ion-card class="active-duty">
         <ion-card-header>
           <ion-card-subtitle>Tollygunge - Howrah</ion-card-subtitle>
           <ion-card-title>Date : 23rd Oct 2020 | 12:00 PM </ion-card-title>
@@ -28,24 +29,25 @@
           <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
         </ion-item>
       </ion-card>
+       -->
 
       <div *ngFor="let option of rentalDetail"> 
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle *ngIf="option.dutytype === '1'">Walk-in Duty</ion-card-subtitle>
           <ion-card-subtitle *ngIf="option.dutytype === '0'">Office Duty</ion-card-subtitle>
-          <ion-card-title>Date : {{option.dutydate}} | 4:00 PM </ion-card-title>
+          <ion-card-title>Date : {{option.dutydate}}  </ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          Cab Number : {{option.carnumber}}<br>
-          Address : 1/7A New Stand Apartment Baghajatin, Kolkata 700033
+          Cab Number : {{option.carnum}}<br>
+          Report To : {{option.reporttoname}}
         </ion-card-content>
 
         <ion-item>
           <ion-icon name="pin" slot="start"></ion-icon>
-          <ion-label>{{option.party}}</ion-label>
-          <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
+          <ion-label>{{option.party}} </ion-label>
+          <ion-button fill="outline" slot="end" (click)="opendialog()">View</ion-button>
         </ion-item>
       </ion-card>
     </div>
