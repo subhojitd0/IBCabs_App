@@ -32,6 +32,8 @@ export class HomePage implements OnInit {
   selectedPath='';
   pagerefrsh: string;
   subscribe: any;
+  dutyid: string;
+  appstatus: string;
 
   constructor(private router:Router, private service: ApiService, public platform: Platform, private dialog:MatDialog) {
     this.router.events.subscribe((event:RouterEvent)=>{
@@ -59,21 +61,87 @@ export class HomePage implements OnInit {
     var json = 
     {
       "mode": "6",
-      "driver":localStorage.getItem(JSON.stringify('driverDetails.drivername'))
+      "driver": JSON.parse(localStorage.getItem("driverDetails")).drivername
     };
     this.service.post(RENTAL_DETAIL_API_OFFICE, json).then((val: any) =>{
       debugger;
-      this.rentalDetail = val.result;
+      this.filterupcomingduty(val.result);
+      //this.rentalDetail = val.result;
     });
   }
-
-    opendialog(){
+  filterupcomingduty(data: any){
+    this.dutyid = localStorage.getItem("driver.dutyid");
+    this.appstatus = localStorage.getItem("driver.appstatus");
+    let upcomingdutys = [];
+    let olddutys = [];
+    data.forEach(element => {
+      if(new Date(element.dutydate) >= new Date()){
+        if(this.dutyid){
+          if(element.dutyid === this.dutyid){
+            element.showGout = true;
+            element.showRout = false;
+            element.showRin = false;
+            element.showGin = false;
+            if(element.appstatus.toString() === "1"){
+              element.showRout = true;
+              element.showGout = false;
+            }
+            if(element.appstatus.toString() === "2"){
+              element.showRin = true;
+              element.showGout = false;
+            }
+            if(element.appstatus.toString() === "3"){
+              element.showGin = true;
+              element.showGout = false;
+            }
+            if(element.appstatus.toString() === "4"){
+              element.showGout = false;
+            }
+          }
+          else{
+            if(this.appstatus === "0"){
+              element.showGout = true;
+            }
+            else{
+              element.showGout = false;
+            }
+            element.showRout = false;
+            element.showRin = false;
+            element.showGin = false;
+          }
+        }
+        else{
+          element.showGout = true;
+          element.showRout = false;
+          element.showRin = false;
+          element.showGin = false;
+        }
+        if(element.appstatus.toString() === "4"){
+          olddutys.push(element);
+        }
+        else{
+          upcomingdutys.push(element);
+        }
+      }
+      else{
+        olddutys.push(element);
+      }
+    });
+    debugger;
+    
+    this.rentalDetail = upcomingdutys;
+  }
+    opendialog(data: any){
       //localStorage.setItem('selectedcarid', id );
-      const dialogRef = this.dialog.open(StartDutyComponent);
+      /* const dialogRef = this.dialog.open(StartDutyComponent);
   
       dialogRef.afterClosed().subscribe(result => {
        console.log(`Dialog closed`);
-      });
+      }); */
+      localStorage.setItem("driver.dutydetails", JSON.stringify(data));
+      localStorage.setItem("driver.dutyid", data.dutyid);
+      localStorage.setItem("driver.appstatus", data.appstatus);
+      this.router.navigateByUrl('/home/kmread');
     }
   
 

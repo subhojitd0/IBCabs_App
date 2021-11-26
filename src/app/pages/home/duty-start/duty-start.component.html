@@ -1,9 +1,24 @@
-    <form ngNativeValidate (submit)="savecar()">
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>KM Reading</ion-title>
+    </ion-toolbar>
+</ion-header>
 
-        <input name="billto" type="text" class="form-control" placeholder="Enter Car No" >
-                    
-                    <br>
+<ion-content>
+    <div>
+        <ion-card>
+            <form ngNativeValidate (submit)="updateduty()" style="height: 150px;">
 
-        <button type="submit" class="btn btn-primary btn-lg">Save</button>
-                
-    </form>
+                <input matInput name="billto" [(ngModel)]="kmreading" type="text" class="form-control km-text" placeholder="Enter KM Reading">
+
+                <br>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-save">Save</button>
+
+            </form>
+        </ion-card>
+    </div>
+</ion-content>

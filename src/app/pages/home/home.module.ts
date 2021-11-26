@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
@@ -39,8 +40,9 @@ const routes:Routes=[
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
-    
+    HomePageRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
  
   declarations: [HomePage,StartDutyComponent]

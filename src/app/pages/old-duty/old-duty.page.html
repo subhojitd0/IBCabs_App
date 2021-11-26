@@ -1,12 +1,55 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Old Duty</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Old Duty</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+    <!-- 
+      <ion-card class="active-duty">
+      <ion-card-header>
+        <ion-card-subtitle>Tollygunge - Howrah</ion-card-subtitle>
+        <ion-card-title>Date : 23rd Oct 2020 | 12:00 PM </ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Cab Number : WB-09T-2451<br>
+        Address : 12A Jadavpur Road Kolkata 700033
+      </ion-card-content>
+
+      <ion-item>
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>Subhojit Das</ion-label>
+        <ion-button fill="outline" slot="end" [routerLink]="['dutyDetails']">View</ion-button>
+      </ion-item>
+    </ion-card>
+     -->
+
+    <div *ngFor="let option of rentalDetail">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle *ngIf="option.dutytype === '1'">Walk-in Duty</ion-card-subtitle>
+                <ion-card-subtitle *ngIf="option.dutytype === '0'">Office Duty</ion-card-subtitle>
+                <ion-card-title>Date : {{option.dutydate}} </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}}
+            </ion-card-content>
+
+            <ion-item>
+                <ion-icon name="pin" slot="start"></ion-icon>
+                <ion-label>{{option.party}} </ion-label>
+            </ion-item>
+        </ion-card>
+    </div>
+
+    <br><br><br><br><br><br>
+
 
 </ion-content>
