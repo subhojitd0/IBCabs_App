@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DutyDetailsPage } from '../duty-details/duty-details.page';
 import { UpcomingDutyPage } from '../upcoming-duty/upcoming-duty.page';
+import { StartDutyComponent } from './duty-start/duty-start.component';
 
 
 import { HomePage } from './home.page';
@@ -29,6 +30,11 @@ const routes: Routes = [
     component: DutyDetailsPage,
     
   },
+  {
+    path: 'kmread',
+    component: StartDutyComponent,
+    
+  }
 ];
 
 @NgModule({

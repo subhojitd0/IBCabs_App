@@ -1,3 +1,47 @@
-.active-duty{
-    border:2px solid rgb(74, 151, 22)
+.active-duty {
+    border: 2px solid rgb(74, 151, 22)
+}
+
+.gout-btn {
+    width: 70%;
+    height: 90%;
+    color: white;
+    background: #28d228;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px blue;
+    border-radius: 10px;
+}
+
+.rout-btn {
+    width: 70%;
+    height: 90%;
+    color: white;
+    background: #28d228;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px #28d228;
+    border-radius: 10px;
+}
+
+.rin-btn {
+    width: 70%;
+    height: 90%;
+    color: white;
+    background: red;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px red;
+    border-radius: 10px;
+}
+
+.gin-btn {
+    width: 70%;
+    height: 90%;
+    color: white;
+    background: blue;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px red;
+    border-radius: 10px;
 }
