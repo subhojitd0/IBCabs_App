@@ -38,5 +38,10 @@ export class SideNavPage implements OnInit {
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
   }
+  logout(){
+    localStorage.removeItem('loggedin');
+        localStorage.removeItem('driverDetails');
+        this.router.navigateByUrl('/');
+  }
 
 }
