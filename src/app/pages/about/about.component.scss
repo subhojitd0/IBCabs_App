@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+}
+
+.form-control {
+    display: flex;
+}
+
+.mat-stroked-button {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.row {
+    padding: 10px;
+}
+
+.full {
+    width: 100%;
+}
+
+.mid {
+    width: 100%;
+    padding-left: 40%;
+}
+
+table {
+    width: 100%;
+}
+
+.km-text {
+    width: 98%;
+    margin-top: 30px;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid;
+    margin-left: 5px;
+}
+
+.btn-save {
+    float: right;
+    width: 98%;
+    padding: 20px;
+    background: blue;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
