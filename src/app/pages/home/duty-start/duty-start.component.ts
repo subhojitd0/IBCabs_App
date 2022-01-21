@@ -27,24 +27,25 @@ export class StartDutyComponent implements OnInit {
    }
 
    updateduty(){
+    let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
     if(this.appstatus === "0"){
       this.rentalAdd.goutkm = this.kmreading;
-      this.rentalAdd.gouttime = new Date().toISOString().replace("T"," ").replace("Z", "");
+      this.rentalAdd.gouttime = timestring.replace("T"," ").replace("Z", "");
       localStorage.setItem("driver.appstatus", "1");
     }
     if(this.appstatus === "1"){
       this.rentalAdd.routkm = this.kmreading;
-      this.rentalAdd.routtime = new Date().toISOString().replace("T"," ").replace("Z", "");
+      this.rentalAdd.routtime = timestring.replace("T"," ").replace("Z", "");
       localStorage.setItem("driver.appstatus", "2");
     }
     if(this.appstatus === "2"){
       this.rentalAdd.rinkm = this.kmreading;
-      this.rentalAdd.rintime = new Date().toISOString().replace("T"," ").replace("Z", "");
+      this.rentalAdd.rintime = timestring.replace("T"," ").replace("Z", "");
       localStorage.setItem("driver.appstatus", "3");
     }
     if(this.appstatus === "3"){
       this.rentalAdd.ginkm = this.kmreading;
-      this.rentalAdd.gintime = new Date().toISOString().replace("T"," ").replace("Z", "");
+      this.rentalAdd.gintime = timestring.replace("T"," ").replace("Z", "");
       localStorage.setItem("driver.appstatus", "0");
     }
     this.rentalAdd.mode = "2";
