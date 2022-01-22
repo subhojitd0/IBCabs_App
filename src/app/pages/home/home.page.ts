@@ -58,6 +58,15 @@ export class HomePage implements OnInit {
       localStorage.setItem('pagerefresh', "1");
       location.reload();
     }
+    this.calldata(); 
+    let timervariale = 60000;
+    
+    setInterval(() => {
+      this.calldata(); 
+    }, timervariale);
+    
+  }
+  calldata(){
     var json = 
     {
       "mode": "6",
