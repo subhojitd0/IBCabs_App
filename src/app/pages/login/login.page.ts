@@ -24,27 +24,32 @@ export class LoginPage implements OnInit {
 
   redirectToHome()
   {
-    var json={
-      "mode":"5",
-      "username": this.username,
-      "password": this.password
+    if(this.username && this.password){
+      var json={
+        "mode":"5",
+        "username": this.username,
+        "password": this.password
+      }
+  
+      this.service.post(DRIVER_API,json).then((val:any)=>{
+        debugger;
+        if(!val.status)
+        {
+          this.driverDetails=val;
+          localStorage.setItem('loggedin', "1");
+          localStorage.setItem('driverDetails',JSON.stringify(this.driverDetails));
+          this.router.navigateByUrl('/home');
+        }
+        else{
+            this.toaster.error("Enter Correct Credentials !");
+        }
+      });        
+  
+    }
+    else{
+      this.toaster.error("Please enter proper credentials");
     }
 
-    this.service.post(DRIVER_API,json).then((val:any)=>{
-      debugger;
-      if(!val.status)
-      {
-        this.driverDetails=val;
-        localStorage.setItem('loggedin', "1");
-        localStorage.setItem('driverDetails',JSON.stringify(this.driverDetails));
-        this.router.navigateByUrl('/home');
-      }
-      else{
-          this.toaster.error("Enter Correct Credentials !");
-      }
-      
-
-    });
     
   }
 

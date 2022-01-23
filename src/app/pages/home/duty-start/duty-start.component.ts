@@ -15,17 +15,27 @@ export class StartDutyComponent implements OnInit {
   rentalAdd: any;
   appstatus: string;
   kmreading: string;
+  showparking: boolean;
+  showParkingBtn: boolean;
+  parking = 0;
   constructor(private router:Router, private service: ApiService, private toastr: ToastrService) {
   }
    ngOnInit() : void {
     this.rentalAdd = JSON.parse(localStorage.getItem("driver.dutydetails"));
     this.appstatus = localStorage.getItem("driver.appstatus");
+    if(this.appstatus === "3"){
+      this.showparking = false;
+      this.showParkingBtn = true;
+    }
    }
    
    savecar(){
 
    }
-
+   showpark(){
+     this.showparking = true;
+     this.showParkingBtn = false;
+   }
    updateduty(){
     let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
     if(this.appstatus === "0"){
@@ -46,6 +56,7 @@ export class StartDutyComponent implements OnInit {
     if(this.appstatus === "3"){
       this.rentalAdd.ginkm = this.kmreading;
       this.rentalAdd.gintime = timestring.replace("T"," ").replace("Z", "");
+      this.rentalAdd.parking = this.parking;
       localStorage.setItem("driver.appstatus", "0");
     }
     this.rentalAdd.mode = "2";
