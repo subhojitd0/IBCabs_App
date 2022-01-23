@@ -3,7 +3,8 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>KM Reading</ion-title>
+        <ion-title *ngIf="!showParking">KM Reading</ion-title>
+        <ion-title *ngIf="showParking">Parking</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -12,11 +13,12 @@
         <ion-card>
             <form ngNativeValidate (submit)="updateduty()" style="height: 150px;">
 
-                <input matInput name="billto" [(ngModel)]="kmreading" type="text" class="form-control km-text" placeholder="Enter KM Reading">
-
+                <input *ngIf="!showParking" matInput name="billto" [(ngModel)]="kmreading" type="number" class="form-control km-text" placeholder="Enter KM Reading">
+                <input *ngIf="showParking" matInput name="parking" [(ngModel)]="parking" type="number" class="form-control km-text" placeholder="Enter Parking">
                 <br>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-save">Save</button>
+                <button *ngIf="showParkingBtn" (click)="showpark()" class="btn btn-primary btn-lg btn-save">Save</button>
+                <button *ngIf="!showParkingBtn" type="submit" class="btn btn-primary btn-lg btn-save">Save</button>
 
             </form>
         </ion-card>
