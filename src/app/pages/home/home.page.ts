@@ -89,6 +89,7 @@ export class HomePage implements OnInit {
     let upcomingdutys = [];
     let olddutys = [];
     data.forEach(element => {
+      element.phone = "tel:" + element.reporttonum;
       if(new Date(element.dutydate) >= new Date()){
         if(this.dutyid){
           if(element.dutyid === this.dutyid){
