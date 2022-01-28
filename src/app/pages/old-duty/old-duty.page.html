@@ -34,17 +34,17 @@
         <ion-card>
             <ion-card-header>
                 <ion-card-subtitle *ngIf="option.dutytype === '1'">Walk-in Duty</ion-card-subtitle>
-                <ion-card-subtitle *ngIf="option.dutytype === '0'">Office Duty</ion-card-subtitle>
-                <ion-card-title>Date : {{option.dutydate}} </ion-card-title>
+                <ion-card-subtitle *ngIf="option.dutytype === '0'">Office Duty ( {{ option.party }} )</ion-card-subtitle>
+                <ion-card-title>Date : {{option.dutydate}} at {{option.dutytime}}</ion-card-title>
             </ion-card-header>
 
             <ion-card-content>
-                Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}}
+                Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}}<span *ngIf="option.reporttonum"> ( {{option.reporttonum}} )</span>
             </ion-card-content>
 
             <ion-item>
                 <ion-icon name="pin" slot="start"></ion-icon>
-                <ion-label>{{option.party}} </ion-label>
+                <ion-label>{{option.pickuploc}} </ion-label>
             </ion-item>
         </ion-card>
     </div>
