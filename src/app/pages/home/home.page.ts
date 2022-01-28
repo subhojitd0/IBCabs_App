@@ -102,8 +102,9 @@ export class HomePage implements OnInit {
               element.showGout = false;
             }
             if(element.appstatus.toString() === "1" && element.da.toString() === "1"){
-              element.showRout = true;
-              element.showGout = false;
+              element.showRout = false;
+              element.showGout = true;
+              element.showAccept = false;
             }
             if(element.appstatus.toString() === "2"){
               element.showRin = true;
@@ -123,6 +124,7 @@ export class HomePage implements OnInit {
               element.showAccept = true;
             }
             else if(this.appstatus === "1" && element.da.toString() === "1"){
+              element.showAccept = false;
               element.showGout = true;
             }
             else{
