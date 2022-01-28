@@ -41,7 +41,7 @@
             </ion-card-header>
 
             <ion-card-content>
-                Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}} <span *ngIf="option.reporttonum"> ( {{option.reporttonum}} )</span>
+                Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}} <span *ngIf="option.reporttonum"> <a href="{{option.phone}}">( {{option.reporttonum}} )</a></span>
             </ion-card-content>
 
             <ion-item>
