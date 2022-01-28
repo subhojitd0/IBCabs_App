@@ -118,10 +118,11 @@ export class HomePage implements OnInit {
             }
           }
           else{
-            if(this.appstatus === "0" && element.da.toString() === "0"){
+            debugger;
+            if(this.appstatus === "0"){
               element.showAccept = true;
             }
-            else if(this.appstatus === "0" && element.da.toString() === "1"){
+            else if(this.appstatus === "1" && element.da.toString() === "1"){
               element.showGout = true;
             }
             else{
