@@ -101,19 +101,22 @@ export class HomePage implements OnInit {
       if(new Date(element.dutydate) >= new Date()){
         if(this.dutyid){
           if(element.dutyid === this.dutyid){
-            element.showGout = true;
+            element.showGout = false;
             element.showRout = false;
             element.showRin = false;
             element.showGin = false;
-            if(element.appstatus.toString() === "1" && element.da.toString() === "0"){
+            if(element.appstatus.toString() === "0" && element.da.toString() === "0")
+            {
               element.showAccept = true;
-              element.showRout = false;
-              element.showGout = false;
             }
-            if(element.appstatus.toString() === "1" && element.da.toString() === "1"){
-              element.showRout = false;
-              element.showGout = true;
+            if(element.appstatus.toString() === "0" && element.da.toString() === "1")
+            {
               element.showAccept = false;
+              element.showGout = true;
+            }
+            if(element.appstatus.toString() === "1"){
+              element.showRout = true;
+              element.showGout = false;
             }
             if(element.appstatus.toString() === "2"){
               element.showRin = true;
@@ -129,10 +132,10 @@ export class HomePage implements OnInit {
           }
           else{
             debugger;
-            if(this.appstatus === "0"){
+            if(this.appstatus === "0" && element.da.toString() === "0"){
               element.showAccept = true;
             }
-            else if(this.appstatus === "1" && element.da.toString() === "1"){
+            else if(this.appstatus === "0" && element.da.toString() === "1"){
               element.showAccept = false;
               element.showGout = true;
             }
@@ -177,6 +180,9 @@ export class HomePage implements OnInit {
         data.mode = "2";
         data.da = "1";
         this.service.post(RENTAL_DETAIL_API_OFFICE, data).then((res: any)=>{ 
+          localStorage.setItem("driver.dutydetails", JSON.stringify(data));
+          localStorage.setItem("driver.dutyid", data.dutyid);
+          localStorage.setItem("driver.appstatus", data.appstatus);
             window.location.reload();
         });
       }
