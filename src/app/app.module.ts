@@ -12,8 +12,8 @@ import { SideNavPage } from './pages/sidenav/sidenav.page';
 import {ToastrModule} from 'ngx-toastr';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { StartDutyComponent } from './pages/home/duty-start/duty-start.component';
-
-
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 @NgModule({
   declarations: [AppComponent, SideNavPage],
   entryComponents: [],
@@ -25,6 +25,8 @@ import { StartDutyComponent } from './pages/home/duty-start/duty-start.component
   providers: [
     StatusBar,
     SplashScreen,
+    Base64ToGallery,
+    AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

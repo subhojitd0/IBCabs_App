@@ -46,3 +46,48 @@ table {
     font-weight: bold;
     color: white;
 }
+
+canvas {
+    border: 3px dashed gray;
+    width: 100%;
+}
+
+.odd-btn {
+    color: white;
+    background: blue;
+    margin-right: 5px;
+}
+
+.even-btn {
+    color: blue;
+    background: white;
+    margin-right: 5px;
+}
+
+.div-sign {
+    margin: 20px;
+}
+
+.save-btn {
+    float: right;
+    width: 45%;
+    padding: 20px;
+    background: blue;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid blue;
+    margin-left: 5px;
+}
+
+.cancel-btn {
+    float: right;
+    width: 45%;
+    padding: 20px;
+    background: white;
+    font-size: 20px;
+    border: 1px solid blue;
+    font-weight: bold;
+    color: blue;
+    margin-right: 5px;
+}
