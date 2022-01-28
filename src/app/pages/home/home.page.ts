@@ -69,6 +69,20 @@ export class HomePage implements OnInit {
       //this.rentalDetail = val.result;
     });
   }
+  getdata(event){
+    var json = 
+    {
+      "mode": "6",
+      "driver": JSON.parse(localStorage.getItem("driverDetails")).drivername
+    };
+    this.service.post(RENTAL_DETAIL_API_OFFICE, json).then((val: any) =>{
+      debugger;
+      this.filterupcomingduty(val.result);
+      if (event)
+          event.target.complete();
+      //this.rentalDetail = val.result;
+    });
+  }
   filterupcomingduty(data: any){
     this.dutyid = localStorage.getItem("driver.dutyid");
     this.appstatus = localStorage.getItem("driver.appstatus");
@@ -82,7 +96,12 @@ export class HomePage implements OnInit {
             element.showRout = false;
             element.showRin = false;
             element.showGin = false;
-            if(element.appstatus.toString() === "1"){
+            if(element.appstatus.toString() === "1" && element.da.toString() === "0"){
+              element.showAccept = true;
+              element.showRout = false;
+              element.showGout = false;
+            }
+            if(element.appstatus.toString() === "1" && element.da.toString() === "1"){
               element.showRout = true;
               element.showGout = false;
             }
@@ -99,7 +118,10 @@ export class HomePage implements OnInit {
             }
           }
           else{
-            if(this.appstatus === "0"){
+            if(this.appstatus === "0" && element.da.toString() === "0"){
+              element.showAccept = true;
+            }
+            else if(this.appstatus === "0" && element.da.toString() === "1"){
               element.showGout = true;
             }
             else{
@@ -111,7 +133,8 @@ export class HomePage implements OnInit {
           }
         }
         else{
-          element.showGout = true;
+          element.showAccept = true;
+          element.showGout = false;
           element.showRout = false;
           element.showRin = false;
           element.showGin = false;
@@ -138,10 +161,20 @@ export class HomePage implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
        console.log(`Dialog closed`);
       }); */
-      localStorage.setItem("driver.dutydetails", JSON.stringify(data));
-      localStorage.setItem("driver.dutyid", data.dutyid);
-      localStorage.setItem("driver.appstatus", data.appstatus);
-      this.router.navigateByUrl('/home/kmread');
+      if(data.showAccept){
+        data.mode = "2";
+        data.da = "1";
+        this.service.post(RENTAL_DETAIL_API_OFFICE, data).then((res: any)=>{ 
+            window.location.reload();
+        });
+      }
+      else{
+        localStorage.setItem("driver.dutydetails", JSON.stringify(data));
+        localStorage.setItem("driver.dutyid", data.dutyid);
+        localStorage.setItem("driver.appstatus", data.appstatus);
+        this.router.navigateByUrl('/home/kmread');
+      }
+      
     }
   
 
