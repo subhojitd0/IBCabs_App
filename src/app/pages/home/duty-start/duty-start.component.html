@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <!-- <ion-buttons slot="end">
-            <ion-button class="odd-btn" expand="full" [disabled]="isCanvasBlank()" (click)="save()"> Save</ion-button>
+                <ion-button class="odd-btn" expand="full" [disabled]="isCanvasBlank()" (click)="save()"> Save</ion-button>
             <ion-button class="even-btn" expand="full" (click)="undo()"> Undo</ion-button>
             <ion-button class="odd-btn" expand="full" (click)="clear()"> Clear</ion-button>
         </ion-buttons> -->
@@ -14,22 +14,22 @@
 </ion-header>
 
 <ion-content>
-    <div>
-        <ion-card>
-            <form ngNativeValidate (submit)="updateduty()" style="height: 300px;">
 
-                <input *ngIf="!showparking" matInput name="billto" [(ngModel)]="kmreading" type="number" class="form-control km-text" placeholder="Enter KM Reading">
-                <input *ngIf="showparking" matInput name="parking" [(ngModel)]="parking" type="number" class="form-control km-text" placeholder="Enter Parking">
-                <br>
+    <ion-card>
+        <form ngNativeValidate (submit)="updateduty()">
 
-                <button *ngIf="showParkingBtn" (click)="showpark()" class="btn btn-primary btn-lg btn-save">Save Parking</button>
-                <button *ngIf="!showParkingBtn && appstatus !=='2'" type="submit" class="btn btn-primary btn-lg btn-save">Save KM</button>
-                <br/><br/><br/><br/>
-                <canvas [style.display]="appstatus ==='2' ? 'block' : 'none'" class="signature-pad-canvas" #canvas width="900" height="300" style="touch-action: none;"></canvas>
-                <!-- <button *ngIf="appstatus ==='2'" class="cancel-btn" color="light" expand="full" (click)="clear()"> Clear</button>-->
-                <button *ngIf="appstatus ==='2'" class="save-btn" color="light" expand="full" [disabled]="isCanvasBlank()" (click)="save()"> Save</button>
+            <input *ngIf="!showparking" matInput name="billto" [(ngModel)]="kmreading" type="number" class="form-control km-text" placeholder="Enter KM Reading">
+            <input *ngIf="showparking" matInput name="parking" [(ngModel)]="parking" type="number" class="form-control km-text" placeholder="Enter Parking">
 
-            </form>
-        </ion-card>
-    </div>
+
+            <button *ngIf="showParkingBtn" (click)="showpark()" class="btn btn-primary btn-lg btn-save">Save Parking</button>
+            <button *ngIf="!showParkingBtn && appstatus !=='2'" type="submit" class="btn btn-primary btn-lg btn-save">Save KM</button>
+            <br/><br/>
+            <canvas [style.display]="appstatus ==='2' ? 'block' : 'none'" class="signature-pad-canvas" #canvas width="900" height="300" style="touch-action: none;"></canvas>
+            <!-- <button *ngIf="appstatus ==='2'" class="cancel-btn" color="light" expand="full" (click)="clear()"> Clear</button>-->
+            <button *ngIf="appstatus ==='2'" class="btn btn-info save-btn" color="light" expand="full" [disabled]="isCanvasBlank()" (click)="save()"> Save</button>
+
+        </form>
+    </ion-card>
+
 </ion-content>

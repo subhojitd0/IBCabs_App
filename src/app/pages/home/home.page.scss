@@ -2,46 +2,46 @@
     border: 2px solid rgb(74, 151, 22)
 }
 
-.gout-btn {
-    width: 70%;
-    height: 90%;
-    color: white;
-    background: #28d228;
+.brdrtoaccept {
+    box-shadow: none;
+    border: 2px solid rgb(230, 36, 30);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.brdraccepted {
+    box-shadow: none;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.accept-btn {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 109, 109);
     font-weight: bold;
     font-size: 18px;
-    border: 1px blue;
+    border: 1px rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.gout-btn {
+    width: 100%;
     border-radius: 10px;
 }
 
 .rout-btn {
-    width: 70%;
-    height: 90%;
-    color: white;
-    background: #28d228;
-    font-weight: bold;
-    font-size: 18px;
-    border: 1px #28d228;
+    width: 100%;
     border-radius: 10px;
 }
 
 .rin-btn {
-    width: 70%;
-    height: 90%;
-    color: white;
-    background: red;
-    font-weight: bold;
-    font-size: 18px;
-    border: 1px red;
+    width: 100%;
     border-radius: 10px;
 }
 
 .gin-btn {
-    width: 70%;
-    height: 90%;
-    color: white;
-    background: blue;
-    font-weight: bold;
-    font-size: 18px;
-    border: 1px red;
+    width: 100%;
     border-radius: 10px;
 }
