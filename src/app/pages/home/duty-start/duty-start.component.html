@@ -26,7 +26,7 @@
                 <button *ngIf="!showParkingBtn && appstatus !=='2'" type="submit" class="btn btn-primary btn-lg btn-save">Save KM</button>
                 <br/><br/><br/><br/>
                 <canvas [style.display]="appstatus ==='2' ? 'block' : 'none'" class="signature-pad-canvas" #canvas width="900" height="300" style="touch-action: none;"></canvas>
-                <button *ngIf="appstatus ==='2'" class="cancel-btn" color="light" expand="full" (click)="clear()"> Clear</button>
+                <!-- <button *ngIf="appstatus ==='2'" class="cancel-btn" color="light" expand="full" (click)="clear()"> Clear</button>-->
                 <button *ngIf="appstatus ==='2'" class="save-btn" color="light" expand="full" [disabled]="isCanvasBlank()" (click)="save()"> Save</button>
 
             </form>
