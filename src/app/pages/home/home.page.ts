@@ -53,6 +53,9 @@ export class HomePage implements OnInit {
    }
 
   ngOnInit() {
+    /* navigator.geolocation.getCurrentPosition(resp => {
+      alert( "lng: " + resp.coords.longitude + " ,lat:" + resp.coords.latitude);
+    }); */
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     if(this.pagerefrsh == "0"){
       localStorage.setItem('pagerefresh', "1");
@@ -90,7 +93,7 @@ export class HomePage implements OnInit {
     let olddutys = [];
     data.forEach(element => {
       element.phone = "tel:" + element.reporttonum;
-      if(new Date(element.dutydate) >= new Date()){
+      if(new Date(element.dutydate) > new Date(new Date().setDate(new Date().getDate()-1))){
         if(this.dutyid){
           if(element.dutyid === this.dutyid){
             element.showGout = false;
