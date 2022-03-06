@@ -103,33 +103,46 @@ export class StartDutyComponent implements OnInit, AfterViewInit {
      this.showParkingBtn = false;
    }
    updateduty(){
-    let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
-    if(this.appstatus === "0"){
-      this.rentalAdd.goutkm = this.kmreading;
-      this.rentalAdd.gouttime = timestring.replace("T"," ").replace("Z", "");
-      localStorage.setItem("driver.appstatus", "1");
-    }
-    if(this.appstatus === "1"){
-      this.rentalAdd.routkm = this.kmreading;
-      this.rentalAdd.routtime = timestring.replace("T"," ").replace("Z", "");
-      localStorage.setItem("driver.appstatus", "2");
-    }
-    if(this.appstatus === "2"){
-      this.rentalAdd.rinkm = this.kmreading;
-      this.rentalAdd.rintime = timestring.replace("T"," ").replace("Z", "");
-      localStorage.setItem("driver.appstatus", "3");
-    }
-    if(this.appstatus === "3"){
-      this.rentalAdd.ginkm = this.kmreading;
-      this.rentalAdd.gintime = timestring.replace("T"," ").replace("Z", "");
-      this.rentalAdd.parking = this.parking;
-      localStorage.setItem("driver.appstatus", "0");
-    }
-    this.rentalAdd.mode = "2";
-    this.service.post(RENTAL_DETAIL_API_OFFICE, this.rentalAdd).then((res: any)=>{ 
-      this.toastr.success("Your data was successfully saved",'Success');
-      this.router.navigateByUrl('/home').then(() => {
-        window.location.reload();
+    this.toastr.info("Please wait while we are saving your data");
+    navigator.geolocation.getCurrentPosition(resp => {
+      alert( "lng: " + resp.coords.longitude + " ,lat:" + resp.coords.latitude);
+      let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
+      if(this.appstatus === "0"){
+        this.rentalAdd.goutkm = this.kmreading;
+        this.rentalAdd.gouttime = timestring.replace("T"," ").replace("Z", "");
+        this.rentalAdd.lat1 = resp.coords.latitude;
+        this.rentalAdd.long1 = resp.coords.longitude;
+        localStorage.setItem("driver.appstatus", "1");
+      }
+      if(this.appstatus === "1"){
+        this.rentalAdd.routkm = this.kmreading;
+        this.rentalAdd.routtime = timestring.replace("T"," ").replace("Z", "");
+        this.rentalAdd.lat2 = resp.coords.latitude;
+        this.rentalAdd.long2 = resp.coords.longitude;
+        localStorage.setItem("driver.appstatus", "2");
+      }
+      if(this.appstatus === "2"){
+        this.rentalAdd.rinkm = this.kmreading;
+        this.rentalAdd.rintime = timestring.replace("T"," ").replace("Z", "");
+        this.rentalAdd.lat3 = resp.coords.latitude;
+        this.rentalAdd.long3 = resp.coords.longitude;
+        localStorage.setItem("driver.appstatus", "3");
+      }
+      if(this.appstatus === "3"){
+        this.rentalAdd.ginkm = this.kmreading;
+        this.rentalAdd.gintime = timestring.replace("T"," ").replace("Z", "");
+        this.rentalAdd.parking = this.parking;
+        this.rentalAdd.lat4 = resp.coords.latitude;
+        this.rentalAdd.long4 = resp.coords.longitude;
+        localStorage.setItem("driver.appstatus", "0");
+      }
+      this.rentalAdd.mode = "2";
+      this.rentalAdd.f = "a";
+      this.service.post(RENTAL_DETAIL_API_OFFICE, this.rentalAdd).then((res: any)=>{ 
+        this.toastr.success("Your data was successfully saved",'Success');
+        this.router.navigateByUrl('/home').then(() => {
+          window.location.reload();
+        });
       });
     });
    }
