@@ -105,7 +105,6 @@ export class StartDutyComponent implements OnInit, AfterViewInit {
    updateduty(){
     this.toastr.info("Please wait while we are saving your data");
     navigator.geolocation.getCurrentPosition(resp => {
-      alert( "lng: " + resp.coords.longitude + " ,lat:" + resp.coords.latitude);
       let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
       if(this.appstatus === "0"){
         this.rentalAdd.goutkm = this.kmreading;

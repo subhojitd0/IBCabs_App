@@ -183,6 +183,7 @@ export class HomePage implements OnInit {
       if(data.showAccept){
         data.mode = "2";
         data.da = "1";
+        data.f = "a";
         this.service.post(RENTAL_DETAIL_API_OFFICE, data).then((res: any)=>{ 
           localStorage.setItem("driver.dutydetails", JSON.stringify(data));
           localStorage.setItem("driver.dutyid", data.dutyid);
