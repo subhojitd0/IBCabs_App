@@ -105,7 +105,33 @@ export class StartDutyComponent implements OnInit, AfterViewInit {
    updateduty(){
     this.toastr.info("Please wait while we are saving your data");
     navigator.geolocation.getCurrentPosition(resp => {
-      let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
+      let timeval = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30));
+      if(timeval.getMinutes() <= 10){
+        timeval.setMinutes(0);
+      }
+      else if(timeval.getMinutes() > 10 && timeval.getMinutes() < 15){
+        timeval.setMinutes(15);
+      }
+      else if(timeval.getMinutes() > 15 && timeval.getMinutes() <=20 ){
+        timeval.setMinutes(15);
+      }
+      else if(timeval.getMinutes() > 20 && timeval.getMinutes() < 30){
+        timeval.setMinutes(30);
+      }
+      else if(timeval.getMinutes() > 30 && timeval.getMinutes() <= 40){
+        timeval.setMinutes(30);
+      }
+      else if(timeval.getMinutes() > 40 && timeval.getMinutes() < 45 ){
+        timeval.setMinutes(45);
+      }
+      else if(timeval.getMinutes() > 45 && timeval.getMinutes() <= 50){
+        timeval.setMinutes(45);
+      }
+      else if(timeval.getMinutes() > 50 && timeval.getMinutes() <= 59){
+        timeval.setHours(timeval.getHours() + 1);
+        timeval.setMinutes(0);
+      }
+      let timestring = timeval.toISOString();
       if(this.appstatus === "0"){
         this.rentalAdd.goutkm = this.kmreading;
         this.rentalAdd.gouttime = timestring.replace("T"," ").replace("Z", "");
