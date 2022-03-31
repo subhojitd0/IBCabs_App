@@ -100,11 +100,11 @@ export class HomePage implements OnInit {
             element.showRout = false;
             element.showRin = false;
             element.showGin = false;
-            if(element.appstatus.toString() === "0")
+            if(element.appstatus.toString() === "0" && element.da.toString() !== "1")
             {
               element.showAccept = true;
             }
-            if(element.appstatus.toString() === "99")
+            if(element.appstatus.toString() === "0" && element.da.toString() === "1")
             {
               element.showAccept = false;
               element.showGout = true;
@@ -175,7 +175,6 @@ export class HomePage implements OnInit {
         data.mode = "2";
         data.da = "1";
         data.f = "a";
-        data.appstatus = "99";
         this.service.post(RENTAL_DETAIL_API_OFFICE, data).then((res: any)=>{ 
           localStorage.setItem("driver.dutydetails", JSON.stringify(data));
           localStorage.setItem("driver.dutyid", data.dutyid);
