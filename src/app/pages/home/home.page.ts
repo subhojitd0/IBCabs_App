@@ -104,16 +104,16 @@ export class HomePage implements OnInit {
       element.phone = "tel:" + element.reporttonum;
       if(new Date(element.dutydate) > new Date(new Date().setDate(new Date().getDate()-1))){
         if(this.dutyid){
-          if(element.dutyid === this.dutyid){
+          //if(element.dutyid === this.dutyid){
             element.showGout = false;
             element.showRout = false;
             element.showRin = false;
             element.showGin = false;
-            if(element.appstatus.toString() === "0" && element.da.toString() === "0")
+            if(element.appstatus.toString() === "0")
             {
               element.showAccept = true;
             }
-            if(element.appstatus.toString() === "0" && element.da.toString() === "1")
+            if(element.appstatus.toString() === "99")
             {
               element.showAccept = false;
               element.showGout = true;
@@ -133,8 +133,8 @@ export class HomePage implements OnInit {
             if(element.appstatus.toString() === "4"){
               element.showGout = false;
             }
-          }
-          else{
+          //}
+          /* else{
             debugger;
             if(this.appstatus === "0" && element.da.toString() === "0"){
               element.showAccept = true;
@@ -149,7 +149,7 @@ export class HomePage implements OnInit {
             element.showRout = false;
             element.showRin = false;
             element.showGin = false;
-          }
+          } */
         }
         else{
           element.showAccept = true;
@@ -184,6 +184,7 @@ export class HomePage implements OnInit {
         data.mode = "2";
         data.da = "1";
         data.f = "a";
+        data.appstatus = "99";
         this.service.post(RENTAL_DETAIL_API_OFFICE, data).then((res: any)=>{ 
           localStorage.setItem("driver.dutydetails", JSON.stringify(data));
           localStorage.setItem("driver.dutyid", data.dutyid);
