@@ -93,7 +93,8 @@ export class HomePage implements OnInit {
     let olddutys = [];
     data.forEach(element => {
       element.phone = "tel:" + element.reporttonum;
-      if(new Date(element.dutydate) > new Date(new Date().setDate(new Date().getDate()-1))){
+      if(new Date(element.dutydate) > new Date(new Date().setDate(new Date().getDate()-1)) 
+          && new Date(element.dutydate).getHours() > 5){ //to check whether it is after 5AM.
         if(this.dutyid){
           //if(element.dutyid === this.dutyid){
             element.showGout = false;
@@ -124,23 +125,6 @@ export class HomePage implements OnInit {
             if(element.appstatus.toString() === "4"){
               element.showGout = false;
             }
-          //}
-          /* else{
-            debugger;
-            if(this.appstatus === "0" && element.da.toString() === "0"){
-              element.showAccept = true;
-            }
-            else if(this.appstatus === "0" && element.da.toString() === "1"){
-              element.showAccept = false;
-              element.showGout = true;
-            }
-            else{
-              element.showGout = false;
-            }
-            element.showRout = false;
-            element.showRin = false;
-            element.showGin = false;
-          } */
         }
         else{
           element.showAccept = true;
