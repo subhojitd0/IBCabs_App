@@ -50,22 +50,27 @@ export class StartDutyComponent implements OnInit, AfterViewInit {
     }
   }
   save(): void {
-    const img = this.signaturePad.toDataURL();
-    debugger;
-    let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
-    if(this.appstatus === "2"){
-      this.rentalAdd.rinkm = this.kmreading;
-      this.rentalAdd.rintime = timestring.replace("T"," ").replace("Z", "");
-      this.rentalAdd.signature = img;
-      localStorage.setItem("driver.appstatus", "3");
-      this.rentalAdd.mode = "2";
-      this.service.post(RENTAL_DETAIL_API_OFFICE, this.rentalAdd).then((res: any)=>{ 
-        this.toastr.success("Your data was successfully saved",'Success');
-        this.router.navigateByUrl('/home').then(() => {
-          window.location.reload();
+    navigator.geolocation.getCurrentPosition(resp => {
+      const img = this.signaturePad.toDataURL();
+      debugger;
+      let timestring = new Date(new Date(new Date().setHours(new Date().getHours() + 5)).setMinutes(new Date().getMinutes() + 30)).toISOString();
+      if(this.appstatus === "2"){
+        this.rentalAdd.rinkm = this.kmreading;
+        this.rentalAdd.rintime = timestring.replace("T"," ").replace("Z", "");
+        this.rentalAdd.signature = img;
+        localStorage.setItem("driver.appstatus", "3");
+        this.rentalAdd.mode = "2";
+        this.rentalAdd.lat3 = resp.coords.latitude;
+        this.rentalAdd.long3 = resp.coords.longitude;
+        this.rentalAdd.f = "a";
+        this.service.post(RENTAL_DETAIL_API_OFFICE, this.rentalAdd).then((res: any)=>{ 
+          this.toastr.success("Your data was successfully saved",'Success');
+          this.router.navigateByUrl('/home').then(() => {
+            window.location.reload();
+          });
         });
-      });
-    }
+      }
+    });
   }
 
   isCanvasBlank(): boolean {
@@ -165,6 +170,9 @@ export class StartDutyComponent implements OnInit, AfterViewInit {
       this.rentalAdd.f = "a";
       this.service.post(RENTAL_DETAIL_API_OFFICE, this.rentalAdd).then((res: any)=>{ 
         this.toastr.success("Your data was successfully saved",'Success');
+        /* debugger;
+        alert("status: " + res.status );
+        this.toastr.info("status: " + res.status ); */
         this.router.navigateByUrl('/home').then(() => {
           window.location.reload();
         });
