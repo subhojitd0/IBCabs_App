@@ -19,7 +19,7 @@
         <form ngNativeValidate (submit)="updateduty()">
 
             <input *ngIf="!showparking" matInput name="billto" [(ngModel)]="kmreading" type="number" class="form-control km-text" placeholder="Enter KM Reading">
-            <input *ngIf="showparking" matInput name="parking" [(ngModel)]="parking" type="number" class="form-control km-text" placeholder="Enter Parking">
+            <input *ngIf="showparking" min="0" max="9999" matInput name="parking" [(ngModel)]="parking" type="number" class="form-control km-text" placeholder="Enter Parking">
 
 
             <button *ngIf="showParkingBtn" (click)="showpark()" class="btn btn-primary btn-lg btn-save">Save Parking</button>
