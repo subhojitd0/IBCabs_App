@@ -45,16 +45,18 @@
                 Cab Number : {{option.carnum}}<br> Report To : {{option.reporttoname}} <span *ngIf="option.reporttonum"> <a href="{{option.phone}}">( {{option.reporttonum}} )</a></span>
 
 
-                <ion-item>
+                <ion-item detail="true">
                     <ion-icon name="pin" slot="start"></ion-icon>
-                    <ion-label>{{option.pickuploc}}</ion-label>
+                    <ion-label>
+                        {{option.pickuploc}}
+                    </ion-label>
                 </ion-item>
                 <br>
-                <ion-button class="accept-btn" *ngIf="option.showAccept" fill="outline" slot="end" (click)="opendialog(option)">Accept Duty</ion-button>
-                <ion-button class="gout-btn" *ngIf="option.showGout" fill="outline" slot="end" (click)="opendialog(option)">Garage Out</ion-button>
-                <ion-button class="rout-btn" *ngIf="option.showRout" fill="outline" slot="end" (click)="opendialog(option)">Reporting</ion-button>
-                <ion-button class="rin-btn" *ngIf="option.showRin" fill="outline" slot="end" (click)="opendialog(option)">Releasing</ion-button>
-                <ion-button class="gin-btn" *ngIf="option.showGin" fill="outline" slot="end" (click)="opendialog(option)">Garage In</ion-button>
+                <ion-button class="accept-btn" *ngIf="option.showAccept" fill="solid" slot="end" (click)="opendialog(option)">Accept Duty</ion-button>
+                <ion-button class="gout-btn" *ngIf="option.showGout" fill="solid" slot="end" (click)="opendialog(option)">Garage Out</ion-button>
+                <ion-button class="rout-btn" *ngIf="option.showRout" fill="solid" slot="end" (click)="opendialog(option)">Reporting</ion-button>
+                <ion-button class="rin-btn" *ngIf="option.showRin" fill="solid" slot="end" (click)="opendialog(option)">Releasing</ion-button>
+                <ion-button class="gin-btn" *ngIf="option.showGin" fill="solid" slot="end" (click)="opendialog(option)">Garage In</ion-button>
 
             </ion-card-content>
         </ion-card>
